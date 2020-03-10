@@ -2,4 +2,4 @@
 Digital Game Marketing 2017510029-2016510083-2017510035-DEUCENG OOP
 2017510035 Kasım gökmen
 2017510028 Nazmican dikmen
-2016510080 Vedat özcan
+2016510083 Vedat özcan
