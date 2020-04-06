@@ -59,11 +59,4 @@ public class Phone {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	@Override
-	public String toString() {
-		return "Phone [countrycode=" + countrycode + ", citycode=" + citycode + ", number=" + number + ", type= " + type
-				+ "]";
-	}
-
 }

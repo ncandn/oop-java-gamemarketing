@@ -29,11 +29,5 @@ public class Date {
 
 	public int getYear() {
 		return this.year;
-	}
-
-	public String toString() {
-
-		return this.day + "/" + this.month + "/" + this.year;
-	}
-
+	}	
 }
