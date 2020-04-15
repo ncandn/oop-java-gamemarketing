@@ -4,6 +4,7 @@ import java.util.List;
 public class Library {
 	private List<Game> games;
 
+	
 	public Library() {
 		this.games = new ArrayList<Game>();
 	}
@@ -15,25 +16,31 @@ public class Library {
 	public void setGames(List<Game> games) {
 		this.games = games;
 	}
-	
-	
 
-	
-	
-	public String displayLibrary() {
-		return null;
+	public String displayLibrary(){
+		String output = "";
+		for (int i = 0; i < games.size(); i++) {
+			output += games.get(i).getName();
+		}
+		return output;
 	}
 
 	public String displayLibrary(String genre) {
-		return null;
+		String output = "";
+		for (int i = 0; i < games.size(); i++) {
+			if (games.get(i).getGenre().equals(genre)) {
+				output += games.get(i).getName();
+			}
+			
+		}
+		return output;
 	}
 
-	public void addGame() {
-
+	public void addGame(Game game) {
+		games.add(game);
 	}
 
-	public void removeGame() {
-
+	public void removeGame(Game game) {
+		games.remove(game);
 	}
-
 }
