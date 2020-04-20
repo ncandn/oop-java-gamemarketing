@@ -1,19 +1,20 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class User extends Person{
     static int ID;
     private String user_name;
     private String nickname;
     private Library library;
-    public  ArrayList<User> friendlist;
-    public ArrayList<User> pending_request;
+    public  List<User> friendlist;
+    public  List<User> pending_request;
 
     public User(String user_name, String nickname, Library library) {
         this.user_name = user_name;
         this.nickname = nickname;
         this.library = library;
-        this.friendlist = ArrayList<User>();
-        this.pending_request =  ArrayList<User>();
+        this.friendlist = new ArrayList<User>();
+        this.pending_request = new  ArrayList<User>();
     }
 
     public static int getID() {
@@ -48,7 +49,7 @@ public class User extends Person{
         this.library = library;
     }
 
-    public ArrayList<User> getPending_request() {
+    public List<User> getPending_request() {
         return pending_request;
     }
 
@@ -56,7 +57,7 @@ public class User extends Person{
         this.pending_request = pending_request;
     }
 
-    public ArrayList<User> getFriendlist() {
+    public List<User> getFriendlist() {
         return friendlist;
     }
 
