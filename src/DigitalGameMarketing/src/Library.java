@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Library {
 	private List<Game> games;
+	Market obj_market;
 
 	
 	public Library() {
@@ -37,10 +38,14 @@ public class Library {
 	}
 
 	public void addGame(Game game) {
-		games.add(game);
+		obj_market.displayMarket();
+		if(obj_market.getAllgames().contains(game))
+			games.add(game);
 	}
 
 	public void removeGame(Game game) {
-		games.remove(game);
+		displayLibrary();
+		if(games.contains(game))
+			games.remove(game);
 	}
 }
