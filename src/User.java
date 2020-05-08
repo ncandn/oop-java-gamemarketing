@@ -6,15 +6,17 @@ public class User extends Person{
     private String user_name;
     private String nickname;
     private Library library;
-    public  List<User> friendlist;
-    public  List<User> pending_request;
+    private  List<User> friendlist;
+    private  DynamicQueue pending_request;
 
-    public User(String user_name, String nickname, Library library) {
+    public User(String user_name, String nickname, String password, String email, Address address,
+               Phone phone, Date date) {
+
         this.user_name = user_name;
         this.nickname = nickname;
-        this.library = library;
+        this.library = new Library();
         this.friendlist = new ArrayList<User>();
-        this.pending_request = new  ArrayList<User>();
+        this.pending_request = new DynamicQueue();
     }
 
     public static int getID() {
@@ -49,11 +51,11 @@ public class User extends Person{
         this.library = library;
     }
 
-    public List<User> getPending_request() {
+    public DynamicQueue getPending_request() {
         return pending_request;
     }
 
-    public void setPending_request(ArrayList<User> pending_request) {
+    public void setPending_request(DynamicQueue pending_request) {
         this.pending_request = pending_request;
     }
 

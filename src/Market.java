@@ -2,13 +2,21 @@ import java.util.*;
 public class Market implements IMarket{
     private List<Game> games;
 
-    public Market(List<Game> games) {
-        this.games = games;
+    public Market() {
+
+        this.games = new ArrayList<Game>();
     }
+
 
     @Override
     public String displayMarket() {
-        return null;
+
+        String strlist = "";
+        for (Game i:games){
+            strlist += i.getName() + " " + i.getPrice() + "TL" +"\n";
+        }
+
+        return strlist;
     }
 
     @Override
@@ -42,5 +50,10 @@ public class Market implements IMarket{
 
     public void setGames(List<Game> games) {
         this.games = games;
+    }
+
+    @Override
+    public void addGame(Game game){
+        games.add(game);
     }
 }

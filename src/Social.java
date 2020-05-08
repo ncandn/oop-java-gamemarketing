@@ -68,7 +68,7 @@ public class Social implements ISocial {
             else if (active_user.getPending_request().contains(target_user))
                 System.out.println("User is already your friend");
             else {
-                active_user.getPending_request().add(target_user);
+                active_user.getPending_request().enqueue(target_user);
                 System.out.println("Friend request sent");
             }
         }
