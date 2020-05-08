@@ -1,11 +1,12 @@
 public class Game {
-    private String name, description, status;
-    private String[] genre;
+    private String name, description;
+    private String genre;
     private int purchase_count, stock, age_limit;
     private double price, rating;
     private Date release_date;
 
-    public Game(String name, String description, String[] genre, int stock, int age_limit, double price, Date release_date) {
+    public Game(String name, String description, String genre,int purchase_count ,int stock, int age_limit, double price,
+                double rating, Date release_date) {
         this.name = name;
         this.description = description;
         this.genre = genre;
@@ -13,6 +14,8 @@ public class Game {
         this.age_limit = age_limit;
         this.price = price;
         this.release_date = release_date;
+        this.purchase_count = purchase_count;
+        this.rating = rating;
     }
 
 
@@ -32,19 +35,11 @@ public class Game {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String[] getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String[] genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -95,4 +90,5 @@ public class Game {
     public void setRelease_date(Date release_date) {
         this.release_date = release_date;
     }
+
 }
