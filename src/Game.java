@@ -1,11 +1,13 @@
-public class Game {
+public class Game implements Cloneable{
     private String name, description;
     private String genre;
+    private String status = "defo";
     private int purchase_count, stock, age_limit;
     private double price, rating;
     private Date release_date;
+    private Date rent_date = new Date();
 
-    public Game(String name, String description, String genre,int purchase_count ,int stock, int age_limit, double price,
+    public Game(String name, String description, String genre, int purchase_count, int stock, int age_limit, double price,
                 double rating, Date release_date) {
         this.name = name;
         this.description = description;
@@ -18,6 +20,26 @@ public class Game {
         this.rating = rating;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getRent_date() {
+        return rent_date;
+    }
+
+    public void setRent_date(Date rent_date) {
+        this.rent_date = rent_date;
+    }
 
     public String getName() {
         return name;
@@ -90,5 +112,5 @@ public class Game {
     public void setRelease_date(Date release_date) {
         this.release_date = release_date;
     }
-
 }
+
