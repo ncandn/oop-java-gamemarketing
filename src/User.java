@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Person{
-    static int ID;
+    private static int ID;
     private String user_name;
     private String nickname;
     private Library library;
-    private  List<User> friendlist;
-    private  DynamicQueue pending_request;
+    private List<User> friendlist;
+    private DynamicQueue pending_request;
 
     public User(String user_name, String nickname, String password, String email, Address address,
                Phone phone, Date date) {

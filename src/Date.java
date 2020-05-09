@@ -18,6 +18,9 @@ public class Date {
 		}
 	}
 
+	public Date() {
+	}
+
 	public int getDay() {
 		return this.day;
 	}

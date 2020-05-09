@@ -7,7 +7,6 @@ public class Market implements IMarket{
         this.games = new ArrayList<Game>();
     }
 
-
     @Override
     public String displayMarket() {
 
@@ -40,7 +39,11 @@ public class Market implements IMarket{
     }
 
     @Override
-    public String searchGame(String name) {
+    public Game searchGame(String name) {
+        for(Game i : games){
+            if (i.getName().equals(name))
+                return i;
+        }
         return null;
     }
 
