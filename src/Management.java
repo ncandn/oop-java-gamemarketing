@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class Management {
-
+    Admin admin = new Admin("admin","admin35");
     Social social = new Social();
     Market market = new Market();
     FileOperation fileOperation = new FileOperation();
@@ -68,17 +68,60 @@ public class Management {
     }
 
     //
-    public void register(String user_name, String nickname, String password, String email, Address address,
+    public void register(String user_name, String name, String lastname, String nickname, String password, String email, Address address,
                          Phone phone, Date birthdate) throws IOException {
 
         if (social.getUserMap().get(user_name) == null) {
-            User new_user = new User(user_name, nickname, password, email, address, phone, birthdate);
+            User new_user = new User(user_name, name, lastname,nickname, password, email, address, phone, birthdate);
             social.getUserMap().put(user_name, new_user);
             fileOperation.updateUser(social.getUserMap());
         } else {
             // WIP
         }
     }
+    //wıp
+    public int control()
+    {
+        return 0;
+    }
+
+    //wıp
+    public void displayCommon()
+    {}
+
+    public void pageAdmin()
+    {
+        //market
+            //addgame+
+            //updategame+
+            //removegame+
+        //social
+            //removeuser
+            //display all user
+    }
+
+    public void pageClient()
+    {
+        //Social
+            //addfriend+
+            //removeFriend+
+            //accept friend req+
+            //display friend+
+            //display comman
+        //market
+            // rent game+
+            // purchased game+
+            // shiping game
+            // display market+
+            // review game
+        // library
+            //display game+
+            //remove game
+
+    }
+
+
+
 
 
 }

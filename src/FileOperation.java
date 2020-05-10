@@ -35,19 +35,19 @@ public class FileOperation {
             scn.nextLine();
             while (scn.hasNext()) {
                 String[] line = (scn.nextLine()).split(";");
-                String[] add_temp = line[4].split("/");
-                String[] phone_temp = line[5].split("/");
-                String[] temp_date = line[6].split("/");
+                String[] add_temp = line[6].split("/");
+                String[] phone_temp = line[7].split("/");
+                String[] temp_date = line[8].split("/");
                 Address address = new Address(add_temp[0], add_temp[1], add_temp[2], add_temp[3]);
                 Phone phone = new Phone(phone_temp[0], phone_temp[1], phone_temp[2], phone_temp[3]);
                 Date date = new Date(Integer.valueOf(temp_date[0]), Integer.valueOf(temp_date[1]), Integer.valueOf(temp_date[2]));
-                User user = new User(line[0], line[1], line[2], line[3], address, phone, date);
+                User user = new User(line[0], line[1], line[2], line[3], line[4], line[5], address, phone, date);
                 userMap.put(line[0], user);
             }
             scn.close();
         } catch (FileNotFoundException e) {
             FileWriter file = new FileWriter("users.csv");
-            file.write("USERNAME;NICKNAME;PASSWORD;EMAIL;ADDRESS;PHONE;BIRTHDATE\n");
+            file.write("USERNAME;NAME;LASTNAME;NICKNAME;PASSWORD;EMAIL;ADDRESS;PHONE;BIRTHDATE\n");
             file.close();
         }
 
@@ -90,7 +90,6 @@ public class FileOperation {
             scn.nextLine();
             while (scn.hasNext()) {
                 String[] line = (scn.nextLine()).split(";", -1);
-
                 if (line[1] != null) {
                     String[] friend_list = line[1].split(",");
                     for (String user : friend_list) {
@@ -155,8 +154,8 @@ public class FileOperation {
             User user = entry.getValue();
             String address = user.getAddress().getStreetname() + "/" + user.getAddress().getTown() + "/" + user.getAddress().getCity() + "/" + user.getAddress().getCountry();
             String phone = user.getPhone().getCountrycode() + "/" + user.getPhone().getCode() + "/" + user.getPhone().getNumber() + "/" + user.getPhone().getType();
-            String birth_date = user.getBirthDate().getDay() + "/" + user.getBirthDate().getMonth() + "/" + user.getBirthDate().getYear();
-            file_writer.write(user.getUser_name() + ";" + user.getNickname() + ";" + user.getPassword()
+            String birth_date = user.getBirthdate().getDay() + "/" + user.getBirthdate().getMonth() + "/" + user.getBirthdate().getYear();
+            file_writer.write(user.getUser_name() + ";" + user.getName() + ";" + user.getLastname() + ";" + user.getNickname() + ";" + user.getPassword()
                     + ";" + user.getEmail() + ";" + address + ";" + phone + ";" + birth_date);
         }
 

@@ -19,6 +19,10 @@ public class Date {
 	}
 
 	public Date() {
+		this.day = 1;
+		this.month = 1;
+		this.year = 2020;
+
 	}
 
 	public int getDay() {
