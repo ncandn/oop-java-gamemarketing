@@ -20,22 +20,44 @@ public class Market implements IMarket{
 
     @Override
     public String displayMarket(String genre) {
-        return null;
+        String strlist = "";
+        for (Game i:games){
+            if (i.getGenre().equals(genre)) {
+                strlist += i.getName() + " " + i.getPrice() + "TL" + "\n";
+            }
+        }
+
+        return strlist;
     }
 
     @Override
     public String sortMarketPrice() {
-        return null;
+        games.sort(Comparator.comparing(Game::getPrice));
+        String strlist = "";
+        for (Game i:games){
+            strlist += i.getName() + " " + i.getPrice() + "TL" + "\n";
+        }
+        return strlist;
     }
 
     @Override
     public String sortMarketRating() {
-        return null;
+        games.sort(Comparator.comparing(Game::getRating));
+        String strlist = "";
+        for (Game i:games){
+            strlist += i.getName() + " " + i.getRating() + "*" + "\n";
+        }
+        return strlist;
     }
 
     @Override
     public String sortMarketPurchaseCount() {
-        return null;
+        games.sort(Comparator.comparing(Game::getPurchase_count));
+        String strlist = "";
+        for (Game i:games){
+            strlist += i.getName() + " " + i.getPurchase_count() + " users have bought this game." + "\n";
+        }
+        return strlist;
     }
 
     @Override
