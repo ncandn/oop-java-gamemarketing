@@ -1,19 +1,22 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class User extends Person{
-    static int ID;
+    private static int ID;
     private String user_name;
     private String nickname;
     private Library library;
-    public  ArrayList<User> friendlist;
-    public ArrayList<User> pending_request;
+    private List<User> friendlist;
+    private DynamicQueue pending_request;
 
-    public User(String user_name, String nickname, Library library) {
+    public User(String user_name, String name, String lastname, String nickname, String password, String email, Address address,
+               Phone phone, Date date) {
+        super(name, lastname, email, password, address, phone, date);
         this.user_name = user_name;
         this.nickname = nickname;
-        this.library = library;
-        this.friendlist = ArrayList<User>();
-        this.pending_request =  ArrayList<User>();
+        this.library = new Library();
+        this.friendlist = new ArrayList<User>();
+        this.pending_request = new DynamicQueue();
     }
 
     public static int getID() {
@@ -48,15 +51,15 @@ public class User extends Person{
         this.library = library;
     }
 
-    public ArrayList<User> getPending_request() {
+    public DynamicQueue getPending_request() {
         return pending_request;
     }
 
-    public void setPending_request(ArrayList<User> pending_request) {
+    public void setPending_request(DynamicQueue pending_request) {
         this.pending_request = pending_request;
     }
 
-    public ArrayList<User> getFriendlist() {
+    public List<User> getFriendlist() {
         return friendlist;
     }
 

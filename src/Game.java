@@ -1,11 +1,14 @@
-public class Game {
-    private String name, description, status;
-    private String[] genre;
+public class Game implements Cloneable{
+    private String name, description;
+    private String genre;
+    private String status = "defo";
     private int purchase_count, stock, age_limit;
     private double price, rating;
     private Date release_date;
+    private Date rent_date = new Date();
 
-    public Game(String name, String description, String[] genre, int stock, int age_limit, double price, Date release_date) {
+    public Game(String name, String description, String genre, int purchase_count, int stock, int age_limit, double price,
+                double rating, Date release_date) {
         this.name = name;
         this.description = description;
         this.genre = genre;
@@ -13,8 +16,30 @@ public class Game {
         this.age_limit = age_limit;
         this.price = price;
         this.release_date = release_date;
+        this.purchase_count = purchase_count;
+        this.rating = rating;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getRent_date() {
+        return rent_date;
+    }
+
+    public void setRent_date(Date rent_date) {
+        this.rent_date = rent_date;
+    }
 
     public String getName() {
         return name;
@@ -32,19 +57,11 @@ public class Game {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String[] getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String[] genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -96,3 +113,4 @@ public class Game {
         this.release_date = release_date;
     }
 }
+
