@@ -9,9 +9,9 @@ public class User extends Person{
     private List<User> friendlist;
     private DynamicQueue pending_request;
 
-    public User(String user_name, String nickname, String password, String email, Address address,
+    public User(String user_name, String name, String lastname, String nickname, String password, String email, Address address,
                Phone phone, Date date) {
-
+        super(name, lastname, email, password, address, phone, date);
         this.user_name = user_name;
         this.nickname = nickname;
         this.library = new Library();

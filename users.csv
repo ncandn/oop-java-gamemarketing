@@ -1,6 +1,9 @@
-USERNAME;NICKNAME;PASSWORD;EMAIL;ADDRESS;PHONE;BIRTHDATE
-ncandn;ncan_1999;abc3554;nazmican.dikmen@ceng.deu.edu.tr;Alta St./Buca/Izmir/Turkey;+90/535/0089/gsm;08/06/1999
-ksmgkmn;ksm_1998;dsfgl897;ksmgkmn@ceng.deu.edu.tr;Malta St./Buca/Izmir/Turkey;+90/535/0083/gsm;27/11/1998
-vedatoz;vedo01;dsfas123;vdctbab@ceng.deu.edu.tr;Kalta St./Buca/Izmir/Turkey;+90/535/0081/gsm;15/07/1997
-jklmn;weebo35;weebweeb;iluvanime@nibba.com;Lalta St./Buca/Izmir/Turkey;+90/535/0085/gsm;12/12/1996
+USERNAME;NAME;LASTNAME;NICKNAME;PASSWORD;EMAIL;ADDRESS;PHONE;BIRTHDATE
+ncandn;Nazmi;Dikmen;ncan_1999;abc3554;nazmican.dikmen@ceng.deu.edu.tr;Alta St./Buca/Izmir/Turkey;+90/535/0089/gsm;08/06/1999
+ksmgkmn;Kasım;Gökmen;ksm_1998;dsfgl897;ksmgkmn@ceng.deu.edu.tr;Malta St./Buca/Izmir/Turkey;+90/535/0083/gsm;27/11/1998
+vedatoz;Vedat;Özcan;vedo01;dsfas123;vdctbab@ceng.deu.edu.tr;Kalta St./Buca/Izmir/Turkey;+90/535/0081/gsm;15/07/1997
+brsts;Barış;Sırmatel;weebo35;weebweeb;iluvanime@nibba.com;Lalta St./Buca/Izmir/Turkey;+90/535/0085/gsm;12/12/1996
+yns35;Yunus;Doğan;kral35;deu35;yns@gmail.com;Yalta St./Buca/Izmir/Turkey;+90/535/4545/gsm;11/27/1990
+deuceng;Deu;Ceng;deuceng35;cme2210;ceng@gmail.com;Tınaztepe St./Buca/Izmir/Turkey;+90/535/4545/gsm;11/27/1995
+
 

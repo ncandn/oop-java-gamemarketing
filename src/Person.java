@@ -1,27 +1,78 @@
 public class Person {
+    private String name;
+    private String lastname;
+    private String email;
+    private String password;
+    private Address address;
+    private Phone phone;
+    private Date birthdate;
 
-
-
-    public String getPassword(){
-        return "";
+    public Person(String name, String lastname, String email, String password, Address address, Phone phone, Date birthdate) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
+        this.birthdate = birthdate;
     }
-    public String getEmail()
+    public Person()
     {
-        return  "";
+
     }
-    public Address getAddress()
-    {
-        Address address = null;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Address getAddress() {
         return address;
     }
-    public Phone getPhone()
-    {
-        Phone phone = null;
-        return  phone;
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
-    public Date getBirthDate()
-    {
-        Date date = null;
-        return  date;
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 }
