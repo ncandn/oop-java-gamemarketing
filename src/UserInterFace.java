@@ -8,7 +8,7 @@ public class UserInterFace {
     	EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    LoginPage login = new LoginPage();
+                    LoginUI login = new LoginUI();
                     login.getLoginFrame().setLocationRelativeTo(null);
                     login.getLoginFrame().setVisible(true);
                 } catch (Exception e) {

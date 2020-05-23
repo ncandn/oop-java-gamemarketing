@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class MenuPage{
+public class MenuUI {
 	
 	private JFrame menuFrame;
 	private JPanel contentPane;
@@ -29,7 +29,7 @@ public class MenuPage{
 
 
 
-	public MenuPage(Management mng, JFrame loginFrame) {
+	public MenuUI(Management mng, JFrame loginFrame) {
 		
 		menuFrame = new JFrame();
 		menuFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
