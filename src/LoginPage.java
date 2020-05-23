@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
-public class Login {
+public class LoginPage {
    
 	private JFrame login_frame;
     private JPanel contentPane;
@@ -23,7 +23,7 @@ public class Login {
 		this.login_frame = login_frame;
 	}
 
-	public Login() throws CloneNotSupportedException, IOException{
+	public LoginPage() throws CloneNotSupportedException, IOException{
 		
 		login_frame = new JFrame();
     	this.mng = new Management();
