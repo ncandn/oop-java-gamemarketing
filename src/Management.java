@@ -2,15 +2,18 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Management {
-    Admin admin = new Admin("admin","admin35");
-    Social social = new Social();
-    Market market = new Market();
-    FileOperation fileOperation = new FileOperation();
+    private Admin admin = new Admin("admin","admin35");
+    private Social social = new Social();
+    private  Market market = new Market();
+    private FileOperation fileOperation = new FileOperation();
+ 
+   
 
-    public void initialCreation() throws CloneNotSupportedException, IOException {
+	public Management() throws CloneNotSupportedException, IOException {
 
         fileOperation.readMarket(market);
         fileOperation.readUser(social.getUserMap());
@@ -45,27 +48,6 @@ public class Management {
         user.getLibrary().addGame(cloned_game);
     }
 
-    public void login(String username, String password) {
-        // WIP
-        if (social.getUserMap().containsKey(username)) {
-            if (social.getUserMap().get(username).getPassword().equals(password)) {
-                Scanner sc = new Scanner(System.in);
-                String input = sc.nextLine();
-                if (input.equals("1")) {
-                    System.out.println("successful");
-                    System.out.println(market.displayMarket());
-                } else if (input.equals("2")) {
-                    System.out.println("successful");
-
-                    System.out.println(social.getUserMap().get(username).getLibrary().displayLibrary());
-                }
-            } else
-                System.err.println("unexpected action 1");
-
-        } else {
-            System.err.println("unexpected action");
-        }
-    }
 
     //
     public void register(String user_name, String name, String lastname, String nickname, String password, String email, Address address,
@@ -87,7 +69,11 @@ public class Management {
 
     //wıp
     public void displayCommon()
-    {}
+    {
+        for (HashMap.Entry<String, User> entry : social.getUserMap().entrySet()) {
+            System.out.println(entry.getKey());
+        }
+    }
 
     public void pageAdmin()
     {
@@ -119,6 +105,18 @@ public class Management {
             //remove game
 
     }
+    public Admin getAdmin() {
+		return admin;
+	}
+
+	public Social getSocial() {
+		return social;
+	}
+
+
+	public Market getMarket() {
+		return market;
+	}
 
 
 

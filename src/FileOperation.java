@@ -72,7 +72,6 @@ public class FileOperation {
                         user.getLibrary().addGame(cloned_game);
                     }
                 }
-                System.out.println(line[1]);
             }
 
             scn.close();
