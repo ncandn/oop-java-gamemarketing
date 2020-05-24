@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
-public class Login {
+public class LoginUI {
    
 	private JFrame login_frame;
     private JPanel contentPane;
@@ -23,7 +23,7 @@ public class Login {
 		this.login_frame = login_frame;
 	}
 
-	public Login() throws CloneNotSupportedException, IOException{
+	public LoginUI() throws CloneNotSupportedException, IOException{
 		
 		login_frame = new JFrame();
     	this.mng = new Management();
@@ -66,7 +66,7 @@ public class Login {
             		if(user.getPassword().equals(String.copyValueOf(in_password.getPassword())))
             		{   
             			
-            			MenuPage menu = new MenuPage(mng, login_frame);
+            			MenuUI menu = new MenuUI(mng, login_frame);
             			menu.getMenuFrame().setLocationRelativeTo(null);
             			menu.getMenuFrame().setVisible(true);
             			login_frame.setVisible(false);
