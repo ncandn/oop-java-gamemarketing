@@ -9,10 +9,9 @@ public class Market implements IMarket{
 
     @Override
     public String displayMarket() {
-
-        String strlist = "Games \n";
+        String strlist = "";
         for (Game i:games){
-            strlist += i.getName() + " " + i.getPrice() + "TL" +"\n";
+            strlist += i.getName() + " ";
         }
 
         return strlist;
