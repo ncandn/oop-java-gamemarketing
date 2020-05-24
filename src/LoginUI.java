@@ -3,34 +3,32 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 
-public class Login {
-   
-	private JFrame login_frame;
+public class LoginUI {
+
+    private JFrame login_frame;
     private JPanel contentPane;
     private JTextField in_username;
     private JPasswordField in_password;
     Management mng ;
-   
+
     public JFrame getLoginFrame() {
-		return login_frame;
-	}
+        return login_frame;
+    }
 
-	public void setLoginFrame(JFrame login_frame) {
-		this.login_frame = login_frame;
-	}
+    public void setLoginFrame(JFrame login_frame) {
+        this.login_frame = login_frame;
+    }
 
-	public Login() throws CloneNotSupportedException, IOException{
-		
-		login_frame = new JFrame();
-    	this.mng = new Management();
+    public LoginUI() throws CloneNotSupportedException, IOException{
 
-    	
-    	login_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	login_frame.setBounds(100, 100, 593, 350);
+        login_frame = new JFrame();
+        this.mng = new Management();
+
+
+        login_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        login_frame.setBounds(100, 100, 593, 350);
         contentPane = new JPanel();
         contentPane.setBackground(Color.LIGHT_GRAY);
         contentPane.setForeground(Color.BLACK);
@@ -60,28 +58,28 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
 
 
-            	User user = mng.getSocial().getUserMap().get(in_username.getText());
-                if(user != null)
-            	{
-            		if(user.getPassword().equals(String.copyValueOf(in_password.getPassword())))
-            		{   
-            			
-            			MenuPage menu = new MenuPage(mng, login_frame);
-            			menu.getMenuFrame().setLocationRelativeTo(null);
-            			menu.getMenuFrame().setVisible(true);
-            			login_frame.setVisible(false);
-            			in_username.setText("");
-            			in_password.setText("");
-            		}
-            		else
-            		{
-            			JOptionPane.showMessageDialog(contentPane, "Your password is incorrect!");
+                User user = mng.getSocial().getUserMap().get(in_username.getText());
+                if(user == null)
+                {
+                    //if(user.getPassword().equals(String.copyValueOf(in_password.getPassword())))
+                    //{
 
-            		}
-            	}
+                        MenuUI menu = new MenuUI(mng, login_frame);
+                        menu.getMenuFrame().setLocationRelativeTo(null);
+                        menu.getMenuFrame().setVisible(true);
+                        login_frame.setVisible(false);
+                        in_username.setText("");
+                        in_password.setText("");
+                    //}
+                    //else
+                   // {
+                   //     JOptionPane.showMessageDialog(contentPane, "Your password is incorrect!");
+
+                    //}
+                }
                 else {
-                	
-                	JOptionPane.showMessageDialog(contentPane, in_username.getText() + " does not exist!");
+
+                    JOptionPane.showMessageDialog(contentPane, in_username.getText() + " does not exist!");
 
                 }
 
@@ -103,6 +101,6 @@ public class Login {
         contentPane.add(btnNewButton_1);
     }
 
-	
+
 
 }
