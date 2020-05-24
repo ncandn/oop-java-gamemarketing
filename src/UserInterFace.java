@@ -5,7 +5,7 @@ public class UserInterFace {
 
     public static void main(String[] args) throws CloneNotSupportedException, IOException {
 
-    	EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     LoginUI login = new LoginUI();
@@ -16,7 +16,5 @@ public class UserInterFace {
                 }
             }
         });
-
-
     }
 }
