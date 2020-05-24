@@ -10,10 +10,10 @@ public class Management {
     private Social social = new Social();
     private  Market market = new Market();
     private FileOperation fileOperation = new FileOperation();
- 
-   
 
-	public Management() throws CloneNotSupportedException, IOException {
+
+
+    public Management() throws CloneNotSupportedException, IOException {
 
         fileOperation.readMarket(market);
         fileOperation.readUser(social.getUserMap());
@@ -78,45 +78,45 @@ public class Management {
     public void pageAdmin()
     {
         //market
-            //addgame+
-            //updategame+
-            //removegame+
+        //addgame+
+        //updategame+
+        //removegame+
         //social
-            //removeuser
-            //display all user
+        //removeuser
+        //display all user
     }
 
     public void pageClient()
     {
         //Social
-            //addfriend+
-            //removeFriend+
-            //accept friend req+
-            //display friend+
-            //display comman
+        //addfriend+
+        //removeFriend+
+        //accept friend req+
+        //display friend+
+        //display comman
         //market
-            // rent game+
-            // purchased game+
-            // shiping game
-            // display market+
-            // review game
+        // rent game+
+        // purchased game+
+        // shiping game
+        // display market+
+        // review game
         // library
-            //display game+
-            //remove game
+        //display game+
+        //remove game
 
     }
     public Admin getAdmin() {
-		return admin;
-	}
+        return admin;
+    }
 
-	public Social getSocial() {
-		return social;
-	}
+    public Social getSocial() {
+        return social;
+    }
 
 
-	public Market getMarket() {
-		return market;
-	}
+    public Market getMarket() {
+        return market;
+    }
 
 
 
