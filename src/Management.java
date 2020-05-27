@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Management {
-    private Admin admin = new Admin("admin","1");
+    private Admin admin = new Admin("admin","admin35");
     private Social social = new Social();
     private  Market market = new Market();
+    private Shipping shipping = new Shipping();
     private FileOperation fileOperation = new FileOperation();
     private Person activeUser;
     
@@ -109,37 +110,16 @@ public class Management {
         }
     }
 
-    public void pageAdmin()
-    {
-        //market
-        //addgame+
-        //updategame+
-        //removegame+
-        //social
-        //removeuser
-        //display all user
-    }
+   
+    public Shipping getShipping() {
+		return shipping;
+	}
 
-    public void pageClient()
-    {
-        //Social
-        //addfriend+
-        //removeFriend+
-        //accept friend req+
-        //display friend+
-        //display comman
-        //market
-        // rent game+
-        // purchased game+
-        // shiping game
-        // display market+
-        // review game
-        // library
-        //display game+
-        //remove game
+	public void setShipping(Shipping shipping) {
+		this.shipping = shipping;
+	}
 
-    }
-    public Admin getAdmin() {
+	public Admin getAdmin() {
         return admin;
     }
 

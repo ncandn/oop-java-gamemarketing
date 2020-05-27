@@ -31,6 +31,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -135,6 +136,8 @@ public class LibraryUI {
 		{
 			JOptionPane.showMessageDialog(null,tempString + "The games have expired, you can rent or buy them again.");
 			 mng.updatelibrary();
+			 libraryFrame.setVisible(false);
+			libraryFrame.setVisible(true);
 		}
 		
 	}
@@ -234,12 +237,18 @@ public class LibraryUI {
 		int size = games.size();
 		for(int i = 0 ;  i < games.size(); i++)
 		{   
+			
+			Calendar rentDate = Calendar.getInstance();
 			Calendar today = Calendar.getInstance();
-			Date date= games.get(i).getRent_date();
-			long diff = (today.getTimeInMillis() /  (24 * 60 * 60 * 1000))  - (((date.getYear() - 1)*366) + ((date.getMonth()-1)*30) + date.getDay() + 
-					games.get(i).getRental_period()*30);
-	        
-			if(games.get(i).getStatus().equals("rent") && diff > 0)
+						SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			try {
+				rentDate.setTime(sdf.parse(games.get(i).getRent_date().toString()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			rentDate.add(Calendar.MONTH, games.get(i).getRental_period());
+			
+			if(games.get(i).getStatus().equals("rent") && today.compareTo(rentDate) == 1)
 			{
 				temp += games.get(i).getName() + "\n";
 				games.remove(i);

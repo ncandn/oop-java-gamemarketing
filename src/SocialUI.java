@@ -340,12 +340,7 @@ public class SocialUI {
 		
 		
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBackground(new Color(108,122,137));
-		btnNewButton_2.setForeground(Color.WHITE);
-		btnNewButton_2.setBounds(185, 143, 97, 25);
-		contentPane.add(btnNewButton_2);
+		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 14));

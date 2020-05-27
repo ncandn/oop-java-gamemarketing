@@ -29,7 +29,7 @@ public class MenuUI {
 
         menuFrame = new JFrame();
         menuFrame.setTitle("DigitalGameMarketing / Menu");
-        menuFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setBounds(100, 100, 525, 351);
 
         contentPane = new JPanel();

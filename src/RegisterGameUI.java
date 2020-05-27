@@ -60,7 +60,7 @@ public class RegisterGameUI {
 		RegisterGameUIFrame = new JFrame();
 		RegisterGameUIFrame.getContentPane().setBackground(new Color(44,62,80));
 		RegisterGameUIFrame.setBounds(100, 100, 672, 596);
-		RegisterGameUIFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		RegisterGameUIFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		RegisterGameUIFrame.getContentPane().setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");

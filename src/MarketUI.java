@@ -69,7 +69,7 @@ public class MarketUI {
 
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
 		comboBox.setBounds(661, 15, 164, 31);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { ".." ,"User Reviews", "Highest Price", "Top Selling" }));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { ".." ,"User Reviews", "Lowest Price", "Top Selling" }));
 		contentPane.add(comboBox);
 
 		JLabel lblNewLabel = new JLabel("Sort By");
@@ -160,7 +160,7 @@ public class MarketUI {
 					RegisterGameUI registerGameUI = new RegisterGameUI(menuFrame, mng);
 					registerGameUI.getRegisterGameUIFrame().setLocationRelativeTo(null);
 					registerGameUI.getRegisterGameUIFrame().setVisible(true);
-					marketFrame.setVisible(false);
+					
 				}
 			});
 		}
@@ -187,7 +187,7 @@ public class MarketUI {
 						marketFrame.setVisible(false);
 						marketFrame.setVisible(true);
 
-					} else if (comboBox.getSelectedItem().equals("Highest Price")) {
+					} else if (comboBox.getSelectedItem().equals("Lowest Price")) {
 						mng.getMarket().sortMarketPrice();
 						panel.removeAll();
 						displayGames(mng.getMarket().getGames(), panel, mng);

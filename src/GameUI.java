@@ -169,7 +169,7 @@ public class GameUI {
 		gameFrame.getContentPane().setBackground(new Color(44,62,80));
 		gameFrame.setBounds(100, 100, 672, 596);
 		gameFrame.getContentPane().setBackground(new Color(44,62,80));
-		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		gameFrame.getContentPane().setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");

@@ -39,28 +39,28 @@ public class LoginUI {
         JLabel lblNewLabel = new JLabel("User Name:");
         lblNewLabel.setForeground(new Color(236,240,241));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel.setBounds(68, 109, 103, 28);
+        lblNewLabel.setBounds(118, 109, 103, 28);
         contentPane.add(lblNewLabel);
 
-        in_username = new JTextField("ksmgkmn");
+        in_username = new JTextField();
         in_username.setFont(new Font("Tahoma", Font.PLAIN, 14));
         in_username.setBackground(new Color(108,122,137));
         in_username.setForeground(Color.BLACK);
-        in_username.setBounds(160, 107, 201, 34);
+        in_username.setBounds(213, 107, 201, 34);
         contentPane.add(in_username);
         in_username.setColumns(10);
 
         JLabel lblNewLabel_1 = new JLabel("Password:");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(new Color(236,240,241));
-        lblNewLabel_1.setBounds(79, 162, 73, 16);
+        lblNewLabel_1.setBounds(128, 162, 73, 16);
         contentPane.add(lblNewLabel_1);
 
-        in_password = new JPasswordField("1");
+        in_password = new JPasswordField();
         in_password.setFont(new Font("Tahoma", Font.PLAIN, 14));
         in_password.setBackground(new Color(108,122,137));
         in_password.setForeground(Color.BLACK);
-        in_password.setBounds(160, 154, 201, 34);
+        in_password.setBounds(213, 154, 201, 34);
         contentPane.add(in_password);
 
         JButton btnNewButton = new JButton("Login");
@@ -118,7 +118,7 @@ public class LoginUI {
         });
         btnNewButton.setBackground(new Color(34,167,240));
         btnNewButton.setForeground(Color.WHITE);
-        btnNewButton.setBounds(268, 201, 146, 46);
+        btnNewButton.setBounds(309, 201, 146, 46);
         contentPane.add(btnNewButton);
 
         JButton btnNewButton_1 = new JButton("Register");
@@ -134,13 +134,13 @@ public class LoginUI {
             	login_frame.setVisible(false);
             }
         });
-        btnNewButton_1.setBounds(89, 201, 146, 46);
+        btnNewButton_1.setBounds(138, 201, 146, 46);
         contentPane.add(btnNewButton_1);
         
-        JLabel lblNewLabel_2 = new JLabel("DIGITAL GAME MARKET");
+        JLabel lblNewLabel_2 = new JLabel("DEU GAMES");
         lblNewLabel_2.setForeground(Color.WHITE);
         lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 31));
-        lblNewLabel_2.setBounds(55, 13, 448, 67);
+        lblNewLabel_2.setBounds(213, 13, 448, 67);
         contentPane.add(lblNewLabel_2);
     }
 }

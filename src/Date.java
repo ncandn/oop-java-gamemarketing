@@ -50,16 +50,19 @@ public class Date {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	public void addMonths(Date date, int numMonths){
+	    date.setMonth((date.getMonth() - 1 + numMonths) % 12 + 1);
+	}
 
 	@Override
 	public String toString() {
 		String tempString = "";
 		
-		if((String.valueOf(year)).length() == 1)
+		if((String.valueOf(day)).length() == 1)
 		{
 			tempString += "0";
 		}
-		tempString += year + "-";
+		tempString += day + "-";
 		
 		if((String.valueOf(month)).length() == 1)
 		{
@@ -67,11 +70,11 @@ public class Date {
 		}
 	    tempString += month + "-";
 		
-		if((String.valueOf(day)).length() == 1)
+		if((String.valueOf(year)).length() == 1)
 		{
 			tempString += "0";
 		}
-	   tempString += day;
+	   tempString += year;
 		
 		return tempString;
 	}

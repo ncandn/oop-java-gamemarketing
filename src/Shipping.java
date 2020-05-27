@@ -1,11 +1,13 @@
 public class Shipping {
-    private double shipping_rate;
+    private double shipping_rate = 20.50;
 
     public Shipping() {
     }
 
-    public double rateCalculation(double shipping_rate){
-        return 0;
+    public double rateCalculation(Game game){
+        
+    	
+    	return (game.getPrice()*10 / 100 ) + shipping_rate;
     }
     public double getShipping_rate() {
         return shipping_rate;

@@ -84,7 +84,7 @@ public class TransactionUI {
         btnPurchase.setForeground(Color.WHITE);
         btnPurchase.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnPurchase.setBackground(new Color(151,163,166));
-        btnPurchase.setBounds(674, 244, 227, 33);
+        btnPurchase.setBounds(674, 244, 269, 33);
         contentPane.add(btnPurchase);
 
         JButton btnRent = new JButton("Rent");
@@ -100,7 +100,7 @@ public class TransactionUI {
         
         btnRent.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnRent.setBackground(new Color(151,163,166));
-        btnRent.setBounds(389, 244, 227, 33);
+        btnRent.setBounds(389, 244, 259, 33);
         contentPane.add(btnRent);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -115,7 +115,7 @@ public class TransactionUI {
         JTextArea textArea = new JTextArea("Do you wish to purchase or rent? \nPlease select an option to continue transaction.");
         textArea.setFont(new Font("Monospaced", Font.BOLD, 14));
         textArea.setEditable(false);
-        textArea.setBounds(389, 184, 512, 50);
+        textArea.setBounds(389, 184, 554, 50);
         contentPane.add(textArea);
 
         JButton btnNewButton_1 = new JButton("Back");
@@ -135,8 +135,9 @@ public class TransactionUI {
         comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
         comboBox.setForeground(Color.WHITE);
 		comboBox.setBackground(new Color(108,122,137));
-        comboBox.setModel(new DefaultComboBoxModel(new String[] {"Buy Digital Collector Edition", "Buy Standard Edition"}));
-        comboBox.setBounds(674, 287, 226, 21);
+        comboBox.setModel(new DefaultComboBoxModel(new String[] {"Buy Digital Collector Edition " + (game.getPrice() + mng.getShipping().rateCalculation(game)) + "TL",
+        		"Buy Standard Edition"}));
+        comboBox.setBounds(674, 287, 269, 21);
         contentPane.add(comboBox);
 
         JComboBox comboBox_rent = new JComboBox();
@@ -145,7 +146,7 @@ public class TransactionUI {
         comboBox_rent.setForeground(Color.WHITE);
 		comboBox_rent.setBackground(new Color(108,122,137));
         comboBox_rent.setFont(new Font("Tahoma", Font.BOLD, 14));
-        comboBox_rent.setBounds(389, 287, 226, 21);
+        comboBox_rent.setBounds(389, 287, 259, 21);
         contentPane.add(comboBox_rent);
 
         btnPurchase.addActionListener(new ActionListener() {
