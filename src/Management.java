@@ -6,36 +6,51 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Management {
-    private Admin admin = new Admin("admin","admin35");
+    private Admin admin = new Admin("admin","1");
     private Social social = new Social();
     private  Market market = new Market();
     private FileOperation fileOperation = new FileOperation();
+    private Person activeUser;
+    
 
+    public Person getActiveUser() {
+		return activeUser;
+	}
 
+	public void setActiveUser(Person activUser) {
+		
+		
+		this.activeUser = activUser;
+	}
+	
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
-    public Management() throws CloneNotSupportedException, IOException {
-
+	public Management() throws CloneNotSupportedException, IOException {
+    	
         fileOperation.readMarket(market);
         fileOperation.readUser(social.getUserMap());
         fileOperation.readSocial(social.getUserMap());
         fileOperation.readLibrary(social.getUserMap(), market);
     }
 
-    public void purchase(Game game, User user_name) throws CloneNotSupportedException {
+    public void purchase(Game game) throws CloneNotSupportedException, IOException {
         // Declaring the target user.
-        User user = social.getUserMap().get(user_name);
+        
         // Cloning the desired game from the market.
         Game cloned_game = (Game) game.clone();
         // For the game was purchased, setting the status according.
         cloned_game.setStatus("purchased");
-        user.getLibrary().addGame(cloned_game);
+        ((User) activeUser).getLibrary().addGame(cloned_game);
+        fileOperation.updateLibrary(social.getUserMap());
+        fileOperation.updateMarket(market);
     }
 
-    public void rent(Game game, User user_name) throws CloneNotSupportedException {
-        // Declaring the target user.
-        User user = social.getUserMap().get(user_name);
+    public void rent(Game game , int rent) throws CloneNotSupportedException, IOException {
+        // Declaring the target user
         Game cloned_game = (Game) game.clone();
-        cloned_game.setStatus("purchased");
+        cloned_game.setStatus("rent");
         // Fetching the system date for renting calculations.
         // Formatting the date and converting it to the desired state.
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -45,29 +60,48 @@ public class Management {
                 Integer.valueOf(formatted_date[2]));
         // Cloning the game.
         cloned_game.setRent_date(rent_date);
-        user.getLibrary().addGame(cloned_game);
+        cloned_game.setRental_period(rent);
+        ((User) activeUser).getLibrary().addGame(cloned_game);
+        fileOperation.updateLibrary(social.getUserMap());
     }
 
 
     //
-    public void register(String user_name, String name, String lastname, String nickname, String password, String email, Address address,
-                         Phone phone, Date birthdate) throws IOException {
+    public void register(String user_name, User user) throws IOException {
 
         if (social.getUserMap().get(user_name) == null) {
-            User new_user = new User(user_name, name, lastname,nickname, password, email, address, phone, birthdate);
-            social.getUserMap().put(user_name, new_user);
+   
+            social.getUserMap().put(user_name, user);
             fileOperation.updateUser(social.getUserMap());
-        } else {
-            // WIP
+            
         }
     }
-    //wıp
+    
+    public void updateSocial() throws IOException, QueueEmpty{
+    	
+    	fileOperation.updateSocial(social.getUserMap());
+		
+	}
+    public void updateUser() throws IOException {
+    	fileOperation.updateUser(social.getUserMap());
+		
+	}
+    public void updatelibrary() throws IOException {
+    	fileOperation.updateLibrary(social.getUserMap());
+		
+	}
+    public void updateMarket() throws IOException {
+    	fileOperation.updateMarket(market);
+	}
+    
+    
+    
     public int control()
     {
         return 0;
     }
 
-    //wıp
+    
     public void displayCommon()
     {
         for (HashMap.Entry<String, User> entry : social.getUserMap().entrySet()) {

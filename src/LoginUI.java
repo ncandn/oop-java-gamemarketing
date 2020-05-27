@@ -13,7 +13,7 @@ public class LoginUI {
     private JPanel contentPane;
     private JTextField in_username;
     private JPasswordField in_password;
-    Management mng ;
+    Management mng = new Management();
    
     public JFrame getLoginFrame() {
 		return login_frame;
@@ -26,36 +26,45 @@ public class LoginUI {
 	public LoginUI() throws CloneNotSupportedException, IOException{
 		
 		login_frame = new JFrame();
-    	this.mng = new Management();
-
-    	
-    	login_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	login_frame.setTitle("DigitalGameMarketing");
+    	login_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	login_frame.setBounds(100, 100, 593, 350);
         contentPane = new JPanel();
-        contentPane.setBackground(Color.LIGHT_GRAY);
+        contentPane.setBackground(new Color(44,62,80));
         contentPane.setForeground(Color.BLACK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         login_frame.setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("User Name");
-        lblNewLabel.setBounds(12, 13, 73, 28);
+        JLabel lblNewLabel = new JLabel("User Name:");
+        lblNewLabel.setForeground(new Color(236,240,241));
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel.setBounds(68, 109, 103, 28);
         contentPane.add(lblNewLabel);
 
-        in_username = new JTextField();
-        in_username.setBounds(81, 16, 116, 22);
+        in_username = new JTextField("ksmgkmn");
+        in_username.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        in_username.setBackground(new Color(108,122,137));
+        in_username.setForeground(Color.BLACK);
+        in_username.setBounds(160, 107, 201, 34);
         contentPane.add(in_username);
         in_username.setColumns(10);
 
-        JLabel lblNewLabel_1 = new JLabel("Password");
-        lblNewLabel_1.setBounds(12, 54, 73, 16);
+        JLabel lblNewLabel_1 = new JLabel("Password:");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1.setForeground(new Color(236,240,241));
+        lblNewLabel_1.setBounds(79, 162, 73, 16);
         contentPane.add(lblNewLabel_1);
 
-        in_password = new JPasswordField();
-        in_password.setBounds(81, 51, 116, 22);
+        in_password = new JPasswordField("1");
+        in_password.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        in_password.setBackground(new Color(108,122,137));
+        in_password.setForeground(Color.BLACK);
+        in_password.setBounds(160, 154, 201, 34);
         contentPane.add(in_password);
 
         JButton btnNewButton = new JButton("Login");
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -65,13 +74,14 @@ public class LoginUI {
             	{
             		if(user.getPassword().equals(String.copyValueOf(in_password.getPassword())))
             		{   
-            			
+            			mng.setActiveUser(user);
             			MenuUI menu = new MenuUI(mng, login_frame);
             			menu.getMenuFrame().setLocationRelativeTo(null);
             			menu.getMenuFrame().setVisible(true);
             			login_frame.setVisible(false);
             			in_username.setText("");
             			in_password.setText("");
+            			
             		}
             		else
             		{
@@ -79,6 +89,25 @@ public class LoginUI {
 
             		}
             	}
+                else if(in_username.getText().equals(mng.getAdmin().getUser_name()))
+                {
+                	if(mng.getAdmin().getPassword().equals(String.copyValueOf(in_password.getPassword())))
+            		{   
+                		mng.setActiveUser(mng.getAdmin());
+            			MenuUI menu = new MenuUI(mng, login_frame);
+            			menu.getMenuFrame().setLocationRelativeTo(null);
+            			menu.getMenuFrame().setVisible(true);
+            			login_frame.setVisible(false);
+            			in_username.setText("");
+            			in_password.setText("");
+            			
+            		}
+            		else
+            		{
+            			JOptionPane.showMessageDialog(contentPane, "Your password is incorrect!");
+
+            		}
+                }
                 else {
                 	
                 	JOptionPane.showMessageDialog(contentPane, in_username.getText() + " does not exist!");
@@ -87,22 +116,31 @@ public class LoginUI {
 
             }
         });
-        btnNewButton.setBackground(Color.DARK_GRAY);
-        btnNewButton.setForeground(Color.BLACK);
-        btnNewButton.setBounds(231, 15, 97, 25);
+        btnNewButton.setBackground(new Color(34,167,240));
+        btnNewButton.setForeground(Color.WHITE);
+        btnNewButton.setBounds(268, 201, 146, 46);
         contentPane.add(btnNewButton);
 
         JButton btnNewButton_1 = new JButton("Register");
-        btnNewButton_1.setBackground(Color.DARK_GRAY);
+        btnNewButton_1.setForeground(Color.WHITE);
+        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        btnNewButton_1.setBackground(new Color(197,57,43));
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            	
+            	RegisterUI registerUI = new RegisterUI(mng, login_frame);
+            	registerUI.getRegisterFrame().setVisible(true);
+            	registerUI.getRegisterFrame().setLocationRelativeTo(null);
+            	login_frame.setVisible(false);
             }
         });
-        btnNewButton_1.setBounds(231, 50, 97, 25);
+        btnNewButton_1.setBounds(89, 201, 146, 46);
         contentPane.add(btnNewButton_1);
+        
+        JLabel lblNewLabel_2 = new JLabel("DIGITAL GAME MARKET");
+        lblNewLabel_2.setForeground(Color.WHITE);
+        lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 31));
+        lblNewLabel_2.setBounds(55, 13, 448, 67);
+        contentPane.add(lblNewLabel_2);
     }
-
-	
-
 }

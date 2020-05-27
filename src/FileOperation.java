@@ -13,7 +13,7 @@ public class FileOperation {
             scn.nextLine();
             while (scn.hasNext()) {
                 String[] line = (scn.nextLine()).split(";");
-                String[] date_temp = line[8].split(",");
+                String[] date_temp = line[8].split("/");
                 Date date = new Date(Integer.valueOf(date_temp[0]), Integer.valueOf(date_temp[1]), Integer.valueOf(date_temp[2]));
                 Game game = new Game(line[0], line[1], line[2], Integer.valueOf(line[3]), Integer.valueOf(line[4]),
                         Integer.valueOf(line[5]), Double.valueOf(line[6]), Double.valueOf(line[7]), date);
@@ -69,6 +69,7 @@ public class FileOperation {
                         Date rent_date = new Date(Integer.valueOf(formatted_date[0]),Integer.valueOf(formatted_date[1]),
                                 Integer.valueOf(formatted_date[2]));
                         cloned_game.setRent_date(rent_date);
+                        cloned_game.setRental_period(Integer.valueOf(line[4]));
                         user.getLibrary().addGame(cloned_game);
                     }
                 }
@@ -77,7 +78,7 @@ public class FileOperation {
             scn.close();
         } catch (FileNotFoundException e) {
             FileWriter file = new FileWriter("library.csv");
-            file.write("USER_NAME;GAME;STATUS;RENT_DATE\n");
+            file.write("USER_NAME;GAME;STATUS;RENT_DATE;RENTAL_PERIOD\n");
             file.close();
         }
     }
@@ -88,17 +89,20 @@ public class FileOperation {
             Scanner scn = new Scanner(file);
             scn.nextLine();
             while (scn.hasNext()) {
-                String[] line = (scn.nextLine()).split(";", -1);
-                if (line[1] != null) {
+            	String temp = scn.nextLine().replaceAll("\\p{C}","");
+                String[] line = temp.trim().split(";", -1);
+                if (line[1] != "" && line[2] != null) {
                     String[] friend_list = line[1].split(",");
                     for (String user : friend_list) {
+                    	if(userMap.get(user) != null)
                         userMap.get(line[0]).getFriendlist().add(userMap.get(user));
                     }
                 }
-                if (line[2] != null) {
+                if (line[2] != "" && line[2] != null) {
                     String[] requests = line[2].split(",");
                     for (String user : requests) {
-                        userMap.get(line[0]).getPending_request().enqueue(userMap.get(user));
+                    	if(userMap.get(user) != null)
+                        userMap.get(line[0]).getPendingRequest().enqueue(userMap.get(user));
                     }
                 }
             }
@@ -123,62 +127,83 @@ public class FileOperation {
     public void updateLibrary (HashMap<String, User> userMap) throws IOException { // update game for library file
 
         FileWriter file_writer = new FileWriter("library.csv", false);
+        file_writer.write("USER_NAME;GAME;STATUS;RENT_DATE\n");
         for (HashMap.Entry<String, User> entry : userMap.entrySet()) {
             for (Game games : entry.getValue().getLibrary().getgames()){
                 String date_str = games.getRent_date().getDay() + "/" + games.getRent_date().getMonth() + "/" +
                         games.getRent_date().getYear();
                 file_writer.write(entry.getKey() + ";" + games.getName() + ";" + games.getStatus()
-                        + ";" + date_str + "\n");
+                        + ";" + date_str + ";" + games.getRental_period() + "\n");
             }
         }
-
+        file_writer.close();
     }
 
     public void updateMarket(Market market) throws IOException {
 
 
         FileWriter file_writer = new FileWriter("games.csv", false);
+        file_writer.write("NAME;DESCRIPTION;GENRE;PURCHASE_COUNT;STOCK;AGE_LIMIT;PRICE;RATING;RELEASE_DATE\n");
         for (Game game : market.getGames()) {
             String date_str = game.getRelease_date().getDay() + "/" + game.getRelease_date().getMonth() + "/" +
                     game.getRelease_date().getYear();
             file_writer.write(game.getName() + ";" + game.getDescription() + ";" + game.getGenre() + ";" + game.getPurchase_count() +
                     ";" + game.getStock() + ";" + game.getAge_limit() + ";" + game.getPrice() + ";" + game.getRating() + ";" + date_str + "\n");
         }
+        file_writer.close();
     }
 
     public void updateUser(HashMap<String, User> userMap) throws IOException {
 
-        FileWriter file_writer = new FileWriter("users.csv", false);
+        FileWriter file_writer = new FileWriter("users.csv");
+        file_writer.write("USERNAME;NAME;LASTNAME;NICKNAME;PASSWORD;EMAIL;ADDRESS;PHONE;BIRTHDATE\n");
         for (HashMap.Entry<String, User> entry : userMap.entrySet()) {
             User user = entry.getValue();
             String address = user.getAddress().getStreetname() + "/" + user.getAddress().getTown() + "/" + user.getAddress().getCity() + "/" + user.getAddress().getCountry();
             String phone = user.getPhone().getCountrycode() + "/" + user.getPhone().getCode() + "/" + user.getPhone().getNumber() + "/" + user.getPhone().getType();
             String birth_date = user.getBirthdate().getDay() + "/" + user.getBirthdate().getMonth() + "/" + user.getBirthdate().getYear();
             file_writer.write(user.getUser_name() + ";" + user.getName() + ";" + user.getLastname() + ";" + user.getNickname() + ";" + user.getPassword()
-                    + ";" + user.getEmail() + ";" + address + ";" + phone + ";" + birth_date);
+                    + ";" + user.getEmail() + ";" + address + ";" + phone + ";" + birth_date + "\n");
         }
-
+        
+        file_writer.close();
     }
 
     public void updateSocial(HashMap<String, User> userMap) throws IOException, QueueEmpty {
 
         FileWriter file = new FileWriter("social.csv");
+        file.write("USER_NAME;FRIENDS;PENDING_REQUESTS\n");
         for (HashMap.Entry<String, User> entry : userMap.entrySet()) {
             String line = entry.getKey() + ";";
             int size = entry.getValue().getFriendlist().size();
             for (int i = 0; i < size - 1; i++)
                 line += entry.getValue().getFriendlist().get(i).getUser_name() + ",";
-            line += entry.getValue().getFriendlist().get(size - 1).getUser_name() + ";";
+            if(size > 0)
+            	{
+            		line += entry.getValue().getFriendlist().get(size - 1).getUser_name();
+            	}
+             line += ";";
 
-
-            size = entry.getValue().getPending_request().size();
+            size = entry.getValue().getPendingRequest().size();
             for (int i = 0; i < size - 1; i++) {
-                line += entry.getValue().getPending_request().peek().getUser_name() + ",";
-                entry.getValue().getPending_request().enqueue(entry.getValue().getPending_request().dequeue());
+                line += entry.getValue().getPendingRequest().peek().getUser_name() + ",";
+                
+                entry.getValue().getPendingRequest().enqueue(entry.getValue().getPendingRequest().dequeue());
             }
-            line += entry.getValue().getPending_request().peek().getUser_name();
-            entry.getValue().getPending_request().enqueue(entry.getValue().getPending_request().dequeue());
+            if(entry.getValue().getPendingRequest().size() > 0)
+            {
+            	if(entry.getValue().getPendingRequest().peek() != null)
+            	{
+            		line += entry.getValue().getPendingRequest().peek().getUser_name();
+            		entry.getValue().getPendingRequest().enqueue(entry.getValue().getPendingRequest().dequeue());
+            	}
+            	
+            }
+           
+            
+            file.write(line + "\n");
         }
+        file.close();
     }
 
 }
