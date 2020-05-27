@@ -51,20 +51,13 @@ public class User extends Person{
         this.library = library;
     }
 
-    public DynamicQueue getPending_request() {
+    public DynamicQueue getPendingRequest() {
         return pending_request;
     }
 
-    public void setPending_request(DynamicQueue pending_request) {
-        this.pending_request = pending_request;
-    }
-
+  
     public List<User> getFriendlist() {
         return friendlist;
-    }
-
-    public void setFriendlist(User user) {
-        this.friendlist = friendlist;
     }
 
 

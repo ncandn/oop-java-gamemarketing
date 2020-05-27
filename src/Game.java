@@ -6,6 +6,7 @@ public class Game implements Cloneable{
     private double price, rating;
     private Date release_date;
     private Date rent_date = new Date();
+    private int rental_period = 0;
 
     public Game(String name, String description, String genre, int purchase_count, int stock, int age_limit, double price,
                 double rating, Date release_date) {
@@ -69,8 +70,8 @@ public class Game implements Cloneable{
         return purchase_count;
     }
 
-    public void setPurchase_count(int purchase_count) {
-        this.purchase_count = purchase_count;
+    public void setPurchase_count() {
+        this.purchase_count = purchase_count + 1;
     }
 
     public int getStock() {
@@ -80,7 +81,9 @@ public class Game implements Cloneable{
     public void setStock(int stock) {
         this.stock = stock;
     }
-
+    public void setStock() {
+        this.stock = stock - 1;
+    }
     public int getAge_limit() {
         return age_limit;
     }
@@ -112,5 +115,14 @@ public class Game implements Cloneable{
     public void setRelease_date(Date release_date) {
         this.release_date = release_date;
     }
+
+	public int getRental_period() {
+		return rental_period;
+	}
+
+	public void setRental_period(int rental_period) {
+		this.rental_period = rental_period;
+	}
+    
 }
 

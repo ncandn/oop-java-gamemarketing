@@ -30,42 +30,47 @@ public class Market implements IMarket{
     }
 
     @Override
-    public String sortMarketPrice() {
+    public void sortMarketPrice() {
         games.sort(Comparator.comparing(Game::getPrice));
-        String strlist = "";
-        for (Game i:games){
-            strlist += i.getName() + " " + i.getPrice() + "TL" + "\n";
-        }
-        return strlist;
     }
 
     @Override
-    public String sortMarketRating() {
-        games.sort(Comparator.comparing(Game::getRating));
-        String strlist = "";
-        for (Game i:games){
-            strlist += i.getName() + " " + i.getRating() + "*" + "\n";
+    public void sortMarketRating() {
+    	
+    	int size = games.size();
+
+        for (int i = size / 2 - 1; i >= 0; i--)
+        	heapifyRating(games, size, i);
+
+        for (int i=size-1; i>=0; i--) {
+        	Collections.swap(games, i, 0);
+        	heapifyRating(games, i, 0);
         }
-        return strlist;
     }
 
     @Override
-    public String sortMarketPurchaseCount() {
-        games.sort(Comparator.comparing(Game::getPurchase_count));
-        String strlist = "";
-        for (Game i:games){
-            strlist += i.getName() + " " + i.getPurchase_count() + " users have bought this game." + "\n";
+    public void sortMarketPurchaseCount() {
+    	int size = games.size();
+
+        for (int i = size / 2 - 1; i >= 0; i--)
+        	heapifyTopSell(games, size, i);
+
+        for (int i=size-1; i>=0; i--) {
+        	Collections.swap(games, i, 0);
+        	heapifyTopSell(games, i, 0);
         }
-        return strlist;
     }
 
     @Override
-    public Game searchGame(String name) {
-        for(Game i : games){
-            if (i.getName().equals(name))
-                return i;
+    public List<Game> searchGame(String name) {
+        List<Game> search_res = new ArrayList<Game>();
+        for(Game i : this.games) {
+            if (i.getName().toLowerCase().contains(name.toLowerCase())) {
+                search_res.add(i);
+            }
         }
-        return null;
+
+        return search_res;
     }
 
     public List<Game> getGames() {
@@ -80,4 +85,41 @@ public class Market implements IMarket{
     public void addGame(Game game){
         games.add(game);
     }
+  
+    
+     private void heapifyTopSell(List<Game> games, int heapSize, int i) 
+        {
+            int largest = i; 
+            int leftChildIdx  = 2*i + 1; 
+            int rightChildIdx  = 2*i + 2;
+
+            if (leftChildIdx  < heapSize && games.get(leftChildIdx).getPurchase_count() < games.get(largest).getPurchase_count())
+                largest = leftChildIdx ;
+
+            if (rightChildIdx  < heapSize && games.get(rightChildIdx).getPurchase_count() < games.get(largest).getPurchase_count())
+                largest = rightChildIdx ;
+
+            if (largest != i) {
+            	Collections.swap(games, i, largest);
+            	heapifyTopSell(games, heapSize, largest);
+            }
+        }
+     private void heapifyRating(List<Game> games, int heapSize, int i) 
+     {
+         int largest = i; 
+         int leftChildIdx  = 2*i + 1; 
+         int rightChildIdx  = 2*i + 2;
+
+         if (leftChildIdx  < heapSize && games.get(leftChildIdx).getRating() < games.get(largest).getRating())
+             largest = leftChildIdx ;
+
+         if (rightChildIdx  < heapSize && games.get(rightChildIdx).getRating() < games.get(largest).getRating())
+             largest = rightChildIdx ;
+
+         if (largest != i) {
+         	Collections.swap(games, i, largest);
+         	heapifyRating(games, heapSize, largest);
+         }
+     }
+    
 }

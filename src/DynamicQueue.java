@@ -55,7 +55,7 @@ public class DynamicQueue implements IQueue
 	{
 		return contents.size();
 	}
-
+	
 	@Override
 	public String toString()
 	{
