@@ -42,7 +42,7 @@ public class LibraryUI {
 
 	private JFrame libraryFrame;
 	private JPanel contentPane;
-	
+
 
 	public JFrame getLibraryFrame() {
 		return libraryFrame;
@@ -50,10 +50,10 @@ public class LibraryUI {
 	public void setLibraryFrame(JFrame libraryFrame) {
 		this.libraryFrame = libraryFrame;
 	}
-	
+
 	public LibraryUI(JFrame menuFrame, Management mng) throws IOException {
-		
-		
+
+
 		this.libraryFrame = new JFrame();
 		libraryFrame.setTitle("DigitalGameMarketing / Library");
 		libraryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,25 +63,25 @@ public class LibraryUI {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		libraryFrame.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-		
+
+
+
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.setBackground(new Color(151,163,166));
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				menuFrame.setVisible(true);
 				libraryFrame.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(12, 557, 118, 25);
 		contentPane.add(btnNewButton);
-		
-		
-		
+
+
+
 		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setForeground(Color.WHITE);
@@ -102,15 +102,15 @@ public class LibraryUI {
 		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrice.setBounds(700, 61, 90, 13);
 		contentPane.add(lblPrice);
-		
-		
-		
+
+
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(27, 83, 788, 445);
 		contentPane.add(scrollPane);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(new Color(108,122,137));
 		comboBox.setForeground(Color.WHITE);
@@ -119,7 +119,7 @@ public class LibraryUI {
 		comboBox.setBounds(731, 13, 170, 22);
 		contentPane.add(comboBox);
 		displayGames(scrollPane, mng, comboBox);
-		
+
 		JLabel lblNewLabel = new JLabel("Display:");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -127,7 +127,7 @@ public class LibraryUI {
 		contentPane.add(lblNewLabel);
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				
+
 				displayGames(scrollPane, mng, comboBox);
 			}
 		});
@@ -139,34 +139,34 @@ public class LibraryUI {
 			 libraryFrame.setVisible(false);
 			libraryFrame.setVisible(true);
 		}
-		
+
 	}
 	private void displayGames(JScrollPane scrollPane, Management mng, JComboBox comboBox) {
-		
+
 		List<Game> games = new ArrayList<Game>();
-			
+
 			if (comboBox.getSelectedItem().equals("All Games") || comboBox ==  null)
 			{
 			 	games = ((User) mng.getActiveUser()).getLibrary().getgames();
-			} 
-			else if (comboBox.getSelectedItem().equals("Rent Games")) 
+			}
+			else if (comboBox.getSelectedItem().equals("Rent Games"))
 			{
 				games = ((User) mng.getActiveUser()).getLibrary().rentGame();
 
-			} 
-			else if (comboBox.getSelectedItem().equals("Purchased Games")) 
+			}
+			else if (comboBox.getSelectedItem().equals("Purchased Games"))
 			{
 				games = ((User) mng.getActiveUser()).getLibrary().purchasedGame();
 			}
-		
-		
+
+
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		scrollPane.setEnabled(true);
 		panel.setAutoscrolls(true);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
-		
+
+
 		for (Game game : games) {
 			JPanel mrgpanel = new JPanel();
 			mrgpanel.setBackground(new Color(108,122,137));
@@ -227,17 +227,17 @@ public class LibraryUI {
 		}
 
 	}
-	
-	
-	
-	
+
+
+
+
 	private String controlRentDate(List<Game> games) {
-		 
+
 		String temp = "";
 		int size = games.size();
 		for(int i = 0 ;  i < games.size(); i++)
-		{   
-			
+		{
+
 			Calendar rentDate = Calendar.getInstance();
 			Calendar today = Calendar.getInstance();
 						SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -247,7 +247,7 @@ public class LibraryUI {
 				e.printStackTrace();
 			}
 			rentDate.add(Calendar.MONTH, games.get(i).getRental_period());
-			
+
 			if(games.get(i).getStatus().equals("rent") && today.compareTo(rentDate) == 1)
 			{
 				temp += games.get(i).getName() + "\n";
@@ -256,6 +256,6 @@ public class LibraryUI {
 			}
 		}
       return temp;
-    
+
 	}
 }

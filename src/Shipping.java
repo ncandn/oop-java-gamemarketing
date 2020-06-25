@@ -5,8 +5,8 @@ public class Shipping {
     }
 
     public double rateCalculation(Game game){
-        
-    	
+
+
     	return (game.getPrice()*10 / 100 ) + shipping_rate;
     }
     public double getShipping_rate() {

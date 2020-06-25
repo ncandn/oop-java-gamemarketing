@@ -37,8 +37,8 @@ public class Date {
 		return this.year;
 	}
 
-	
-	
+
+
 	public void setDay(int day) {
 		this.day = day;
 	}
@@ -57,28 +57,28 @@ public class Date {
 	@Override
 	public String toString() {
 		String tempString = "";
-		
+
 		if((String.valueOf(day)).length() == 1)
 		{
 			tempString += "0";
 		}
 		tempString += day + "-";
-		
+
 		if((String.valueOf(month)).length() == 1)
 		{
 			tempString += "0";
 		}
 	    tempString += month + "-";
-		
+
 		if((String.valueOf(year)).length() == 1)
 		{
 			tempString += "0";
 		}
 	   tempString += year;
-		
+
 		return tempString;
 	}
-	
-	
-	
+
+
+
 }

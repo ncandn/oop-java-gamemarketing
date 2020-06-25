@@ -1,8 +1,8 @@
 USER_NAME;FRIENDS;PENDING_REQUESTS
-ksmgkmn;vedatoz;brsts,yns35
-vedatoz;ksmgkmn,ncandn;
+ksmgkmn;vedo;brsts,yns35,deuceng
 brtgkmn;;
 brsts;;
-deuceng;ncandn,vedatoz;ksmgkmn
-ncandn;vedatoz,deuceng,yns35;brsts,ksmgkmn
+deuceng;ncandn,vedo;
+ncandn;vedo,deuceng;brsts,ksmgkmn
 yns35;;
+vedo;ksmgkmn,ncandn;

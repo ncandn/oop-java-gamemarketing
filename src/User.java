@@ -55,7 +55,7 @@ public class User extends Person{
         return pending_request;
     }
 
-  
+
     public List<User> getFriendlist() {
         return friendlist;
     }

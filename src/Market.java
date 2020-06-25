@@ -1,12 +1,15 @@
 import java.util.*;
 public class Market implements IMarket{
     private List<Game> games;
-
-    public Market() {
+    private static Market market = new Market();
+    private Market() {
 
         this.games = new ArrayList<Game>();
     }
 
+    public static Market getMarket(){
+        return market;
+    }
     @Override
     public String displayMarket() {
         String strlist = "";
@@ -36,7 +39,7 @@ public class Market implements IMarket{
 
     @Override
     public void sortMarketRating() {
-    	
+
     	int size = games.size();
 
         for (int i = size / 2 - 1; i >= 0; i--)
@@ -85,12 +88,12 @@ public class Market implements IMarket{
     public void addGame(Game game){
         games.add(game);
     }
-  
-    
-     private void heapifyTopSell(List<Game> games, int heapSize, int i) 
+
+
+     private void heapifyTopSell(List<Game> games, int heapSize, int i)
         {
-            int largest = i; 
-            int leftChildIdx  = 2*i + 1; 
+            int largest = i;
+            int leftChildIdx  = 2*i + 1;
             int rightChildIdx  = 2*i + 2;
 
             if (leftChildIdx  < heapSize && games.get(leftChildIdx).getPurchase_count() < games.get(largest).getPurchase_count())
@@ -104,10 +107,10 @@ public class Market implements IMarket{
             	heapifyTopSell(games, heapSize, largest);
             }
         }
-     private void heapifyRating(List<Game> games, int heapSize, int i) 
+     private void heapifyRating(List<Game> games, int heapSize, int i)
      {
-         int largest = i; 
-         int leftChildIdx  = 2*i + 1; 
+         int largest = i;
+         int leftChildIdx  = 2*i + 1;
          int rightChildIdx  = 2*i + 2;
 
          if (leftChildIdx  < heapSize && games.get(leftChildIdx).getRating() < games.get(largest).getRating())
@@ -121,5 +124,5 @@ public class Market implements IMarket{
          	heapifyRating(games, heapSize, largest);
          }
      }
-    
+
 }

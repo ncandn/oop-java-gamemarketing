@@ -123,6 +123,6 @@ public class Game implements Cloneable{
 	public void setRental_period(int rental_period) {
 		this.rental_period = rental_period;
 	}
-    
+
 }
 

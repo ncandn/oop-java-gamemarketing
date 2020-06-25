@@ -16,11 +16,6 @@ public class Person {
         this.phone = phone;
         this.birthdate = birthdate;
     }
-   
-    public Person(String password) {
-		
-    	 this.password = password;
-	}
 
 	public String getName() {
         return name;
@@ -78,5 +73,5 @@ public class Person {
         this.birthdate = birthdate;
     }
 
-	
+
 }

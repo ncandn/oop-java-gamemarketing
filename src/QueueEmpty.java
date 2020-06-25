@@ -1,7 +1,5 @@
-
-public class QueueEmpty extends Exception 
+public class QueueEmpty extends Exception
 {
-  
 	public QueueEmpty()
 	{
 		super();

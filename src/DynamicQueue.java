@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class DynamicQueue implements IQueue 
+public class DynamicQueue implements IQueue
 {
 	private List<User> contents;
 
@@ -9,7 +9,7 @@ public class DynamicQueue implements IQueue
 	{
 		contents = new ArrayList();
 	}
-	
+
 	@Override
 	public void enqueue(User item)
 	{
@@ -33,7 +33,7 @@ public class DynamicQueue implements IQueue
 
 		User retVal = contents.get(0);
 		contents.remove(0);
-		
+
 		return retVal;
 	}
 
@@ -55,21 +55,21 @@ public class DynamicQueue implements IQueue
 	{
 		return contents.size();
 	}
-	
+
 	@Override
 	public String toString()
 	{
 		int size = contents.size();
-		
+
 		String retString = "<" + size + ">\n<font:\n";
-		
+
 		for(int i=0; i<size; i++)
 		{
 			retString += contents.get(i) + "\n";
 		}
-		
+
 		retString += ":rear>";
-		
+
 		return retString;
 	}
 

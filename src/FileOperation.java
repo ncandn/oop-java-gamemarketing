@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FileOperation {
 
-
+    PersonFactory personFactory = new PersonFactory();
     public void readMarket(Market market) throws IOException {
 
         try {
@@ -15,6 +15,7 @@ public class FileOperation {
                 String[] line = (scn.nextLine()).split(";");
                 String[] date_temp = line[8].split("/");
                 Date date = new Date(Integer.valueOf(date_temp[0]), Integer.valueOf(date_temp[1]), Integer.valueOf(date_temp[2]));
+
                 Game game = new Game(line[0], line[1], line[2], Integer.valueOf(line[3]), Integer.valueOf(line[4]),
                         Integer.valueOf(line[5]), Double.valueOf(line[6]), Double.valueOf(line[7]), date);
 
@@ -41,7 +42,9 @@ public class FileOperation {
                 Address address = new Address(add_temp[0], add_temp[1], add_temp[2], add_temp[3]);
                 Phone phone = new Phone(phone_temp[0], phone_temp[1], phone_temp[2], phone_temp[3]);
                 Date date = new Date(Integer.valueOf(temp_date[0]), Integer.valueOf(temp_date[1]), Integer.valueOf(temp_date[2]));
-                User user = new User(line[0], line[1], line[2], line[3], line[4], line[5], address, phone, date);
+                Person user_factory = personFactory.getPerson("USER",line[0],
+                        line[1], line[2], line[3], line[4], line[5], address, phone, date);
+                User user = (User)user_factory;
                 userMap.put(line[0], user);
             }
             scn.close();
@@ -165,7 +168,7 @@ public class FileOperation {
             file_writer.write(user.getUser_name() + ";" + user.getName() + ";" + user.getLastname() + ";" + user.getNickname() + ";" + user.getPassword()
                     + ";" + user.getEmail() + ";" + address + ";" + phone + ";" + birth_date + "\n");
         }
-        
+
         file_writer.close();
     }
 
@@ -187,7 +190,7 @@ public class FileOperation {
             size = entry.getValue().getPendingRequest().size();
             for (int i = 0; i < size - 1; i++) {
                 line += entry.getValue().getPendingRequest().peek().getUser_name() + ",";
-                
+
                 entry.getValue().getPendingRequest().enqueue(entry.getValue().getPendingRequest().dequeue());
             }
             if(entry.getValue().getPendingRequest().size() > 0)
@@ -197,10 +200,10 @@ public class FileOperation {
             		line += entry.getValue().getPendingRequest().peek().getUser_name();
             		entry.getValue().getPendingRequest().enqueue(entry.getValue().getPendingRequest().dequeue());
             	}
-            	
+
             }
-           
-            
+
+
             file.write(line + "\n");
         }
         file.close();

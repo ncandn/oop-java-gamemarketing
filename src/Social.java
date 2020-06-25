@@ -27,7 +27,7 @@ public class Social implements ISocial {
             		removePendingRequest(active_user, target_user);
                 }
         }
-       
+
     }
 
     @Override
@@ -59,11 +59,11 @@ public class Social implements ISocial {
     @Override
     public void sendRequest(User active_user, User target_user) {
 
-        
+
         if (target_user == null)
             System.out.println("There is no user named " + target_user.getNickname());
         else {
-            
+
             if (active_user.getFriendlist().contains(target_user))
                 System.out.println("User is already your friend");
             else if (active_user.getPendingRequest().contains(target_user))
@@ -75,9 +75,9 @@ public class Social implements ISocial {
 
 
     }
-    
-    public User searchUser(String nickName) 
-    {   
+
+    public User searchUser(String nickName)
+    {
     	User user = null;
     	for (HashMap.Entry<String, User> entry : userMap.entrySet())
     	{
@@ -113,9 +113,9 @@ public class Social implements ISocial {
     	{
     		tempList.add(entry.getValue());
     	}
-    	
+
     	return tempList;
 	}
 
-	
+
 }

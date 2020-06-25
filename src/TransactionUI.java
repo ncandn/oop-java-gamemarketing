@@ -40,7 +40,7 @@ public class TransactionUI {
 
     public TransactionUI(JFrame gameFrame, Game game, Management mng) {
 
-    	
+
         transactionFrame = new JFrame();
         transactionFrame.setTitle("DigitalGameMarketing / Transaction");
         transactionFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -93,11 +93,11 @@ public class TransactionUI {
     	{
         	btnRent.setForeground(Color.GRAY);
     	}
-    	else 
+    	else
     	{
     		btnRent.setForeground(Color.WHITE);
     	}
-        
+
         btnRent.setFont(new Font("Tahoma", Font.BOLD, 14));
         btnRent.setBackground(new Color(151,163,166));
         btnRent.setBounds(389, 244, 259, 33);
@@ -163,7 +163,7 @@ public class TransactionUI {
                         }
                     	game.setStock();
                     }
-                    else 
+                    else
                     {
                     	 JOptionPane.showMessageDialog(null,"physical game copy out of stock!");
 					}
@@ -175,7 +175,7 @@ public class TransactionUI {
                     {
                     	try {
                             JOptionPane.showMessageDialog(null,"The game has been added to your library successfully!");
-                           
+
                             if(((User) mng.getActiveUser()).getLibrary().getGame(game.getName()) != null
             						&& ((User) mng.getActiveUser()).getLibrary().getGame(game.getName()).getStatus().equals("rent"))
                             {
@@ -186,22 +186,22 @@ public class TransactionUI {
                             else {
                             	mng.purchase(game);
 							}
-                            
-                            
+
+
                             game.setPurchase_count();
                         } catch (CloneNotSupportedException | IOException e1) {
                             e1.printStackTrace();
                         }
                     }
-                    else 
+                    else
                     {
                     	JOptionPane.showMessageDialog(null,"The digital copy of the game is available in your library");
 					}
                 }
             }
         });
-        
-  
+
+
 
         btnRent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -209,7 +209,7 @@ public class TransactionUI {
             	if((((User) mng.getActiveUser()).getLibrary().getGame(game.getName()) != null
 						&& !((User) mng.getActiveUser()).getLibrary().getGame(game.getName()).getStatus().equals("rent")
 						&& !((User) mng.getActiveUser()).getLibrary().getGame(game.getName()).getStatus().equals("purchased"))
-            			
+
             			|| ((User) mng.getActiveUser()).getLibrary().getGame(game.getName()) == null)
             	{
             		if(comboBox_rent.getSelectedIndex() == 0) {
@@ -237,12 +237,12 @@ public class TransactionUI {
                         }
                     }
             	}
-            	else 
+            	else
             	{
             		JOptionPane.showMessageDialog(null,"You have already rented the game");
 				}
-            	
-            	
+
+
             }
         });
 

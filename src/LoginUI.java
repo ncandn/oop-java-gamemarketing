@@ -8,13 +8,13 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class LoginUI {
-   
+
 	private JFrame login_frame;
     private JPanel contentPane;
     private JTextField in_username;
     private JPasswordField in_password;
     Management mng = new Management();
-   
+
     public JFrame getLoginFrame() {
 		return login_frame;
 	}
@@ -24,7 +24,7 @@ public class LoginUI {
 	}
 
 	public LoginUI() throws CloneNotSupportedException, IOException{
-		
+
 		login_frame = new JFrame();
     	login_frame.setTitle("DigitalGameMarketing");
     	login_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +73,7 @@ public class LoginUI {
                 if(user != null)
             	{
             		if(user.getPassword().equals(String.copyValueOf(in_password.getPassword())))
-            		{   
+            		{
             			mng.setActiveUser(user);
             			MenuUI menu = new MenuUI(mng, login_frame);
             			menu.getMenuFrame().setLocationRelativeTo(null);
@@ -81,7 +81,7 @@ public class LoginUI {
             			login_frame.setVisible(false);
             			in_username.setText("");
             			in_password.setText("");
-            			
+
             		}
             		else
             		{
@@ -92,7 +92,7 @@ public class LoginUI {
                 else if(in_username.getText().equals(mng.getAdmin().getUser_name()))
                 {
                 	if(mng.getAdmin().getPassword().equals(String.copyValueOf(in_password.getPassword())))
-            		{   
+            		{
                 		mng.setActiveUser(mng.getAdmin());
             			MenuUI menu = new MenuUI(mng, login_frame);
             			menu.getMenuFrame().setLocationRelativeTo(null);
@@ -100,7 +100,7 @@ public class LoginUI {
             			login_frame.setVisible(false);
             			in_username.setText("");
             			in_password.setText("");
-            			
+
             		}
             		else
             		{
@@ -109,7 +109,7 @@ public class LoginUI {
             		}
                 }
                 else {
-                	
+
                 	JOptionPane.showMessageDialog(contentPane, in_username.getText() + " does not exist!");
 
                 }
@@ -127,7 +127,7 @@ public class LoginUI {
         btnNewButton_1.setBackground(new Color(197,57,43));
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	
+
             	RegisterUI registerUI = new RegisterUI(mng, login_frame);
             	registerUI.getRegisterFrame().setVisible(true);
             	registerUI.getRegisterFrame().setLocationRelativeTo(null);
@@ -136,7 +136,7 @@ public class LoginUI {
         });
         btnNewButton_1.setBounds(138, 201, 146, 46);
         contentPane.add(btnNewButton_1);
-        
+
         JLabel lblNewLabel_2 = new JLabel("DEU GAMES");
         lblNewLabel_2.setForeground(Color.WHITE);
         lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 31));

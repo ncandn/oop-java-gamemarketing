@@ -70,12 +70,12 @@ public class MenuUI {
             	socialUI.getSocialFrame().setLocationRelativeTo(null);
             	socialUI.getSocialFrame().setVisible(true);
             	menuFrame.setVisible(false);
-            	
+
             }
         });
         btnNewButton_1.setBounds(108, 109, 310, 25);
         contentPane.add(btnNewButton_1);
-      
+
 
         if(!mng.getActiveUser().equals(mng.getAdmin()))
         {
@@ -95,13 +95,13 @@ public class MenuUI {
                 	libraryUI.getLibraryFrame().setLocationRelativeTo(null);
                 	libraryUI.getLibraryFrame().setVisible(true);
                 	menuFrame.setVisible(false);
-                	
+
                 }
             });
             btnNewButton_2.setBounds(108, 185, 310, 25);
             contentPane.add(btnNewButton_2);
-            
-            
+
+
             JButton btnNewButton_3 = new JButton("Profile");
             btnNewButton_3.setForeground(Color.WHITE);
             btnNewButton_3.setBackground(new Color(151,163,166));
@@ -116,9 +116,9 @@ public class MenuUI {
             });
             btnNewButton_3.setBounds(108, 147, 310, 25);
             contentPane.add(btnNewButton_3);
-            
-            
-        } 
+
+
+        }
 
         JButton exit_button = new JButton("Logout");
         exit_button.setForeground(Color.WHITE);

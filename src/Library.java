@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Library {
     private List<Game> games;
-    
-    
+
+
     public Library() {
         this.games = new ArrayList<Game>();
     }
@@ -36,7 +36,7 @@ public class Library {
     public void addGame(Game game) {
 
       games.add(game);
-         
+
     }
 
     public void removeGame(Game game) {
@@ -45,19 +45,19 @@ public class Library {
 
     }
     public List<Game> rentGame() {
-    	
+
     	List<Game> list = new ArrayList<Game>();
 		for(Game game : games)
 		{
 			if(game.getStatus().equals("rent"))
 				list.add(game);
 		}
-    	
-    	
+
+
     	return list;
 	}
     public List<Game> purchasedGame() {
-    	
+
     	List<Game> list = new ArrayList<Game>();
 		for(Game game : games)
 		{
@@ -66,18 +66,18 @@ public class Library {
 		}
     	return list;
 	}
-    
+
     public Game getGame(String game_name)
     {   Game tempGame = null;
-    	
+
     	for(Game game : games)
     	{
     		if(game.getName().equals(game_name))
     			tempGame = game;
     	}
-   
+
     	return tempGame;
-    			
+
     }
-  
+
 }

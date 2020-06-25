@@ -143,8 +143,8 @@ public class MarketUI {
 		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrice.setBounds(717, 61, 46, 13);
 		contentPane.add(lblPrice);
-		
-		
+
+
 		if(mng.getActiveUser().equals(mng.getAdmin()))
 		{
 			JButton btnNewButton_1 = new JButton("Add Game");
@@ -160,7 +160,7 @@ public class MarketUI {
 					RegisterGameUI registerGameUI = new RegisterGameUI(menuFrame, mng);
 					registerGameUI.getRegisterGameUIFrame().setLocationRelativeTo(null);
 					registerGameUI.getRegisterGameUIFrame().setVisible(true);
-					
+
 				}
 			});
 		}
@@ -213,7 +213,7 @@ public class MarketUI {
 			JPanel mrgpanel = new JPanel();
 			mrgpanel.setLayout(new BoxLayout(mrgpanel, BoxLayout.X_AXIS));
 			mrgpanel.setBackground(new Color(108,122,137));
-			
+
 			mrgpanel.setPreferredSize(new Dimension(788, 100));
 
 			JPanel npanel = new JPanel();
@@ -266,7 +266,7 @@ public class MarketUI {
 			JLabel txt3 = new JLabel(String.valueOf(game.getPrice()) + "TL");
 			txt3.setForeground(Color.WHITE);
 			txt3.setFont(new Font("Tahoma", Font.BOLD, 14));
-			
+
 			txt1panel.add(txt1);
 			txt2panel.add(txt2);
 			txt3panel.add(txt3);
